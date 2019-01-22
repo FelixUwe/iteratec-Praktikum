@@ -3,12 +3,14 @@ PlayState = {}
 PlayState._spawnCharacters = function (data) {
 	this.hero = new Hero(this.game, data.hero.x, data.hero.y);
 	this.game.add.existing(this.hero);
-	this.game.physics.enable(this);
+
 };
 
 function Hero(game, x, y) {
 	Phaser.Sprite.call(this, game, x, y, 'hero');
 	this.anchor.set(0.5,0.5);
+	this.game.physics.enable(this);
+	this.body.collideWorldBounds = true;
 }
 
 Hero.prototype = Object.create(Phaser.Sprite.prototype);
@@ -57,7 +59,8 @@ PlayState.init = function () {
 };
 
 Hero.prototype.move = function (direction) {
-	this.x += direction * 2.5; // 2.5 pixels each frame
+	const SPEED = 200;
+	this.body.velocity.x= direction * SPEED;
 };
 
 PlayState.update  = function () {
@@ -70,5 +73,8 @@ PlayState._handleInput = function () {
 	}
 	else if (this.keys.right.isDown) {
 		this.hero.move(1);
+	}
+	else {
+		this.hero.move(0);
 	}
 };
