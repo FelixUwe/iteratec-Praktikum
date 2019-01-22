@@ -26,12 +26,15 @@ PlayState.preload = function () {
 	this.game.load.image('grass:4x1', 'images/grass_4x1.png');
 	this.game.load.image('grass:2x1', 'images/grass_2x1.png');
 	this.game.load.image('grass:1x1', 'images/grass_1x1.png');
-
+	this.game.load.audio('sfx:jump', 'audio/jump.wav');
 };
 
 PlayState.create = function () {
 	this.game.add.image(0, 0, 'background');
 	this._loadLevel(this.game.cache.getJSON('level:1'));
+	this.sfx = {
+		jump: this.game.add.audio('sfx:jump')
+	};
 };
 
 PlayState._loadLevel = function (data) {
@@ -63,8 +66,17 @@ PlayState.init = function () {
 	this.keys = this.game.input.keyboard.addKeys({
 		left: Phaser.KeyCode.LEFT,
 		right: Phaser.KeyCode.RIGHT,
+		up: Phaser.KeyCode.UP
 	});
 	this.game.renderer.renderSession.roundPixels = true;
+	this.keys.up.onDown.add(function(){
+		let didJump = this.hero.jump();
+		if (didJump) {
+			this.sfx.jump.play();
+
+		}
+	}, this);
+
 };
 
 Hero.prototype.move = function (direction) {
@@ -91,4 +103,17 @@ PlayState._handleInput = function () {
 
 PlayState._handleCollisions = function () {
 	this.game.physics.arcade.collide(this.hero, this.platforms);
+};
+
+
+Hero.prototype.jump = function () {
+	const JUMP_SPEED = 600;
+	let canJump = this.body.touching.down;
+
+	if (canJump) {
+		this.body.velocity.y = -JUMP_SPEED;
+	}
+
+
+	return canJump;
 };
