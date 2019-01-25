@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/js/main.js" line="74" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/js/main.js" line="76" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6972b298-3707-4e45-b34a-cc934774c209" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="198" column="30" lean-forward="true" selection-start-line="198" selection-start-column="30" selection-end-line="198" selection-end-column="30" />
+            <state relative-caret-position="162">
+              <caret line="58" column="54" lean-forward="true" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -109,16 +110,16 @@
       <option name="presentableId" value="Default" />
       <updated>1548076197204</updated>
       <workItem from="1548076200254" duration="2958000" />
-      <workItem from="1548145756938" duration="22472000" />
+      <workItem from="1548145756938" duration="22569000" />
+      <workItem from="1548403637054" duration="1869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25430000" />
+    <option name="totallyTimeSpent" value="27396000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="27" width="976" height="1200" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3084995" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -155,8 +156,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="198" column="30" lean-forward="true" selection-start-line="198" selection-start-column="30" selection-end-line="198" selection-end-column="30" />
+        <state relative-caret-position="162">
+          <caret line="58" column="54" lean-forward="true" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
         </state>
       </provider>
     </entry>

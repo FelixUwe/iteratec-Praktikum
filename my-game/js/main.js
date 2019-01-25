@@ -36,6 +36,8 @@ PlayState.preload = function () {
 	this.game.load.spritesheet('spider', 'images/spider.png', 42, 32);
 	this.game.load.image('invisible-wall', 'image/invisible_wall.png');
 	this.game.load.audio('sfx:stomp','audio/stomp.wav');
+	this.game.load.image('icon:coin', 'images/coin_icon.png');
+	this.game.load.image('font:numbers', 'images/numbers.png');
 };
 
 PlayState.create = function () {
@@ -46,6 +48,7 @@ PlayState.create = function () {
 		coin: this.game.add.audio('sfx:coin'),
 		stomp: this.game.add.audio('sfx:stomp')
 	};
+	this._createHud();
 };
 
 PlayState._loadLevel = function (data) {
@@ -93,6 +96,7 @@ PlayState.init = function () {
 
 		}
 	}, this);
+	this.coinPickupCount = 0;
 
 };
 
@@ -104,6 +108,7 @@ Hero.prototype.move = function (direction) {
 PlayState.update = function () {
 	this._handleCollisions();
 	this._handleInput();
+	this.coinFont.text = `x${this.coinPickupCount}`;
 };
 
 PlayState._handleInput = function () {
@@ -154,6 +159,7 @@ PlayState._spawnCoin = function (coin) {
 PlayState._onHeroVsCoin = function (hero,coin) {
 	coin.kill();
 	this.sfx.coin.play();
+	this.coinPickupCount++;
 };
 
 function Spider(game, x, y) {
@@ -216,3 +222,20 @@ Spider.prototype.die =function () {
 		this.kill();
 	}, this);
 }
+
+PlayState._createHud = function () {
+	const NUMBERS_STR = '0123456789X ';
+
+	this.coinFont = this.game.add.retroFont('font:numbers', 20, 26,
+		NUMBERS_STR, 6);
+	let coinScoreImg = this.game.make.image(coinIcon.x + coinIcon.width,
+		coinIcon.height / 2, this.coinFont);
+	coinScoreImg.anchor.set(0, 0.5);
+	let coinIcon = this.game.make.image(0,0, 'icon:coin');
+
+
+	this.hud = this.game.add.group();
+	this.hud.add(coinIcon);
+	this.hud.position.set(10, 10);
+	this.hud.add(coinScoreImg);
+};
